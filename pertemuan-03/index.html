@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pertemuan 3</title>
 </head>
 <body>
-    ini akan ditampilkan di website
+    <fieldset>
+        <legend>Data Pribadi</legend>
+        <form action="" method="GET">
+    Nama : <input type="text" name="Nama">
+    password : <input type="password" name="Password">
+    Jenis kelamin : <input type="radio" name="Jenis_Kelamin" value="Laki-Laki" checked>Laki-laki
+                    <input type="radio" name="Jenis_Kelamin" value="Perempuan" checked>Perempuan
+    Tanggal Lahir : <input type="date" name="Tanggal_Lahir">
+
+    Program Studi :
+    <select name="prodi">
+    <option value="si" selected>Sistem Informasi</option>
+    <option value="ti" selected>Teknik Informatika</option>
+    <option value="bd" selected>Bisnis Digital</option>
+    </select>
+    Hobi : <input type="checkbox" name="hobi_baca">Membaca
+        <input type="checkbox" name="hobi_traveling">Traveling
+        <input type="checkbox" name="hobi_masak">memastikan
+    Alamat : <textarea name="alamat"></textarea>
+    <input type="submit" name="submit" value="Kirim">
+</form>
+</fieldset>
 </body>
 </html>
