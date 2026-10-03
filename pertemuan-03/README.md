@@ -32,4 +32,4 @@
 
 ## GitHub Pages 
 
-URL: [tempel URL GitHub Pages Pertemuan 3] 
+URL: [https://github.com/2622500007-source/2622500007-PWD-SI1A-2627O/blob/main/pertemuan-03/index.html] 
