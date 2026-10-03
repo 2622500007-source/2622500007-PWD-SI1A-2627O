@@ -32,4 +32,4 @@
 
 ## GitHub Pages 
 
-URL: [https://github.com/2622500007-source/2622500007-PWD-SI1A-2627O/blob/main/pertemuan-03/index.html] 
+URL: [https://github.com/2622500007-source/2622500007-PWD-SI1A-2627O/blob/main/pertemuan-03/index.html]
