@@ -1,3 +1,3 @@
-<script src="script.js">
-    console.log("Javascript berhasil dijalankan.");
+<script>
+    console.log("script.js berhasil dijalankan.");
 </script>
