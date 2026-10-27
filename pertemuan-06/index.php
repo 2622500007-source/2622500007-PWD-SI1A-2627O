@@ -15,7 +15,7 @@ $sisaSemester = $batasSemester - $semester;
 $semesterValid = $semester >= 1 && $semester <= $batasSemester;
 $statusSemester = ($semesterValid && $statusAktif) ? "Sesuai rentang" : "Perlu diperiksa";
 const NAMA_MATA_KULIAH = "Pemrograman Web Dasar";
-const PROFIL_GITHUB = "https://github.com/2622500007-source/";
+const PROFIL_GITHUB = "2622500007-source";
 // Bagian 3: Percabangan if-elseif-else
 if ($semester < 3) {
     $keteranganSemester = "Semester awal";
@@ -140,7 +140,7 @@ switch ($programStudi) {
             <h2>Kontak</h2>
             <p>
                 Kunjungi 
-                <a target="_blank" href="https://github.com/2622500007-source/<?= PROFIL_GITHUB ?>">profil GitHub saya</a>.
+                <a target="_blank" href="https://github.com/<?= PROFIL_GITHUB ?>">profil GitHub saya</a>.
             </p>
 
     <form id="contactForm" action="index.php" method="get" novalidate>
