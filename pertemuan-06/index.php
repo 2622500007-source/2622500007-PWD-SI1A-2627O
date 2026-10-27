@@ -9,6 +9,9 @@ $semester = 1;
 $ipk = 4.00;
 $statusAktif = true;
 $catatanTambahan = null;
+// Bagian 2: Operator
+$batasSemester = 8;
+$sisaSemester = $batasSemester - $semester;
 const NAMA_MATA_KULIAH = "Pemrogramana Web Dasar";
 const PROFIL_GITHUB = "2622500007-source"
 ?>
@@ -58,6 +61,10 @@ const PROFIL_GITHUB = "2622500007-source"
             <h2>Tentang saya</h2>
             <article>
                 <h3>Profil Singkat</h3>
+                <p>Sisa semester hingga batas: <?php echo $sisaSemester; ?></p>
+                <section id="about">
+                    <h2>Tentang Saya</h2>
+                </section>
                 <p>Saya Mahasiswa Program Studi Sistem Informasi</p>
 
                 <h3>Target Belajar</h3>
