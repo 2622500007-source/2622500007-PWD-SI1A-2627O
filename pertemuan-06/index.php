@@ -15,7 +15,7 @@ $sisaSemester = $batasSemester - $semester;
 $semesterValid = $semester >= 1 && $semester <= $batasSemester;
 $statusSemester = ($semesterValid && $statusAktif) ? "Sesuai rentang" : "Perlu diperiksa";
 const NAMA_MATA_KULIAH = "Pemrogramana Web Dasar";
-const PROFIL_GITHUB = "2622500007-source"
+const PROFIL_GITHUB = "2622500007-source";
 // Bagian 3: Percabangan if-elseif-else
 if ($semester < 3) {
     $keteranganSemester = "Semester awal";
@@ -73,6 +73,7 @@ if ($semester < 3) {
                 <h3>Profil Singkat</h3>
                 <p>Sisa semester hingga batas: <?php echo $sisaSemester; ?></p>
                 <p>Pemeriksaan rentang semester: <?php echo $statusSemester; ?></p>
+                <p>Semester: <?php echo $semester . " (" . $keteranganSemester . ")"; ?></p>
                 <section id="about">
                     <h2>Tentang Saya</h2>
                 </section>
