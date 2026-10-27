@@ -84,7 +84,7 @@ switch ($programStudi) {
             <article>
                 <h3>Profil Singkat</h3>
                 <p?>Program Studi: <?php echo $namaProdi . "(" . $programStudi . ")"; ?></p>
-                <p>Fokus program studi: <?php echo $echoProgramStudi; ?></p>
+                <p>Fokus program studi: <?php echo $ProgramStudi; ?></p>
                 <p>Status mahasiswa: <?php echo $statusAktif ? "Aktif" : "Tidak Aktif"; ?></p>
                 <p>Sisa semester hingga batas: <?php echo $sisaSemester; ?></p>
                 <p>Pemeriksaan rentang semester: <?php echo $statusSemester; ?></p>
