@@ -7,19 +7,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <p>Konten HTML statis</p>
 
 <?php
-        // Pengujian awal eksekusi PHP.
-        echo "PHP berhasil dijalankan.";
-
-        // Komentar satu baris.
-
-        print "Keluaran menggunakan print.";
-
-        /*
-        Komentar beberapa baris.
-        Komentar ini tidak ditampilkan pada halaman
-        */
+    echo "<p>Konten yang dihasilkan oleh PHP.</p>";
         ?>
     <!-- Struktur utama halaman P2 menggunakan elemen semantik HTML5 -->
     <header>
