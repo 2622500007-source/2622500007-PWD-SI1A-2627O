@@ -50,6 +50,13 @@ switch ($programStudi) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+     <?php
+    if (isset($_GET['Nama']) && $_GET['Nama'] !== '') {
+        echo '<p>Nama yang diterima: '
+            . htmlspecialchars($_GET['Nama'], ENT_QUOTES, 'UTF-8')
+            . '</p>';
+    }
+    ?>
     <!-- Struktur utama halaman P2 menggunakan elemen semantik HTML5 -->
     <header>
         <div class="header-top">
@@ -215,6 +222,7 @@ switch ($programStudi) {
                 <option value="">-- Pilih Program Studi --</option>
                 <option value="SI">Sistem Informasi</option>
                 <option value="TI">Teknik Informatika</option>
+                <option value="BD">Bisnis Digital</option>
             </select>
         </div>
 
