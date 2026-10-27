@@ -143,7 +143,7 @@ switch ($programStudi) {
                 <a target="_blank" href="https://github.com/2622500007-source/<?= PROFIL_GITHUB ?>">profil GitHub saya</a>.
             </p>
 
-    <form action="index.html" method="get">
+    <form id="contactForm" action="index.php" method="get" novalidate>
         <div class="form-group">
             <label for="nama">Nama Lengkap</label><br>
             <input class="input-form" 
