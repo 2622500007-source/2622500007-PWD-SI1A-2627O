@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<?php
+        // Pengujian awal eksekusi PHP.
+        echo "PHP berhasil dijalankan.";
+        ?>
     <!-- Struktur utama halaman P2 menggunakan elemen semantik HTML5 -->
     <header>
         <div class="header-top">
