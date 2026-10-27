@@ -21,11 +21,6 @@ const PROFIL_GITHUB = "2622500007-source"
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>Konten HTML statis</p>
-
-<?php
-    echo "<p>Konten yang dihasilkan oleh PHP.</p>";
-        ?>
     <!-- Struktur utama halaman P2 menggunakan elemen semantik HTML5 -->
     <header>
         <div class="header-top">
@@ -52,7 +47,9 @@ const PROFIL_GITHUB = "2622500007-source"
     <main>
         <section id="home">
             <h2>Selamat Datang</h2>
-            <p>Halo, saya Nadiyah Salma. Saya sedang mempelajarai Pemrograman Web Dasar</p>
+            <p>Halo, saya Nadiyah Salma <strong><?php echo $namaMahasiswa; ?></strong>. Saya dengan mempelajari matakuliah 
+            PWD <strong><?php print NAMA_MATA_KULIAH; ?></strong> pada tahun akademik <?php echo $tahunAkademik;
+            ?>.</p>
             <!-- Gambar profil menggunakan folder img -->
             <img src="img/foto-mahasiswa.jpeg" alt="Foto Nadiyah Salma">
         </section>
@@ -74,7 +71,10 @@ const PROFIL_GITHUB = "2622500007-source"
 
         <section id="contact">
             <h2>Kontak</h2>
-            <p>Kunjungi <a href="https://github.com/2622500007-source">profil GitHub saya</a>.</p>
+            <p>
+                Kunjungi 
+                <a target="_blank" href="https://github.com/2622500007-source/<?= PROFIL_GITHUB ?>">profil GitHub saya</a>.
+            </p>
 
 
     <form action="index.html" method="get">
