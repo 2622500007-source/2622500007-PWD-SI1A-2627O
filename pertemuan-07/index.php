@@ -13,6 +13,34 @@ $jenisPesan = $_POST['jenis_pesan'] ?? '';
 $prodi = $_POST['prodi'] ?? '';
 $pesan = $_POST['pesan'] ?? '';
 $minat = $_POST['minat'] ?? [];
+$pesanKesalahan = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (trim($nama ?? '') === '') {
+        $pesanKesalahan .= 'Nama lengkap wajib diisi. ';
+    }
+    if (trim($email) === '') {
+        $pesanKesalahan .= 'Email wajib diisi. ';
+    }
+    if (trim($semesterForm) === '') {
+        $pesanKesalahan .= 'Semester wajib diisi. ';
+    }
+    if (trim($tanggal) === '') {
+        $pesanKesalahan .= 'Tanggal kunjungan wajib diisi. ';
+    }
+    if ($jenisPesan === '') {
+        $pesanKesalahan .= 'Jenis pesan wajib dipilih. ';
+    }
+    if ($prodi === '') {
+        $pesanKesalahan .= 'Program studi wajib dipilih. ';
+    }
+    if (trim($pesan) === '') {
+        $pesanKesalahan .= 'Pesan wajib diisi. ';
+    }
+    if (empty($minat)) {
+        $pesanKesalahan .= 'Minat wajib dipilih minimal satu. ';
+    }
+}
 
 // P6: PHP dasar dan pemrograman sisi peladen
 // Bagian 1: Variabel dan konstanta
