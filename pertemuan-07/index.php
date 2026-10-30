@@ -65,7 +65,7 @@ switch ($programStudi) {
         &#9776;
         </button>
         </div>
-        <nav>
+        <nav id="navMenu">
             <ul>
                 <li><a href="#home">Beranda</a></li>
                 <li><a href="#about">Tentang</a></li>
@@ -147,7 +147,7 @@ switch ($programStudi) {
                 <a target="_blank" href="https://github.com/<?= PROFIL_GITHUB ?>">profil GitHub saya</a>.
             </p>
 
-    <form id="contactForm" action="index.php" method="get" novalidate>
+    <form id="contactForm" action="index.php" method="post" novalidate>
         <p id="formFeedback" aria-live="polite"></p>
         <div class="form-group">
             <label for="nama">Nama Lengkap</label><br>
