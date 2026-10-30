@@ -4,6 +4,16 @@ if (isset($_POST['nama'])) {
     $nama = $_POST['nama'];
     echo "Nama yang diterima: " . htmlspecialchars($nama, ENT_QUOTES, 'UTF-8');
 }
+
+// E.4: membaca data formulir lainnya
+$email = $_POST['email'] ?? '';
+$semesterForm = $_POST['semester'] ?? '';
+$tanggal = $_POST['tanggal'] ?? '';
+$jenisPesan = $_POST['jenis_pesan'] ?? '';
+$prodi = $_POST['prodi'] ?? '';
+$pesan = $_POST['pesan'] ?? '';
+$minat = $_POST['minat'] ?? [];
+
 // P6: PHP dasar dan pemrograman sisi peladen
 // Bagian 1: Variabel dan konstanta
 $nim = "2622500007";
@@ -206,9 +216,9 @@ switch ($programStudi) {
         
         <div class="form-group">
             <p>Topik yang Diminati</p>
-            <input type="checkbox" id="minat-html" name="minat" value="HTML">
+            <input type="checkbox" id="minat-html" name="minat[]" value="HTML">
             <label for="minat-html">HTML</label>
-            <input type="checkbox" id="minat-css" name="minat" value="CSS">
+            <input type="checkbox" id="minat-css" name="minat[]" value="CSS">
             <label for="minat-css">CSS</label>
         </div>
 
