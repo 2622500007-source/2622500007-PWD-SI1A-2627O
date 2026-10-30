@@ -50,13 +50,6 @@ switch ($programStudi) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-     <?php
-    if (isset($_GET['Nama']) && $_GET['Nama'] !== '') {
-        echo '<p>Nama yang diterima: '
-            . htmlspecialchars($_GET['Nama'], ENT_QUOTES, 'UTF-8')
-            . '</p>';
-    }
-    ?>
     <!-- Struktur utama halaman P2 menggunakan elemen semantik HTML5 -->
     <header>
         <div class="header-top">
@@ -94,7 +87,7 @@ switch ($programStudi) {
             <h2>Tentang saya</h2>
             <article>
                 <h3>Profil Singkat</h3>
-                <p?>Program Studi: <?php echo $namaProdi . "(" . $programStudi . ")"; ?></p>
+                <p>Program Studi: <?php echo $namaProdi . "(" . $programStudi . ")"; ?></p>
                 <p>Fokus program studi: <?php echo $fokusProgramStudi; ?></p>
                 <p>Status mahasiswa: <?php echo $statusAktif ? "Aktif" : "Tidak Aktif"; ?></p>
                 <p>Sisa semester hingga batas: <?php echo $sisaSemester; ?></p>
@@ -134,7 +127,7 @@ switch ($programStudi) {
                     }
                     ?>
                 </ol>
-                <h3>Semester (Perulangan while):</3>
+                <h3>Semester (Perulangan while):</h3>
                         <ol>
                             <?php
                             $nomorSemester = 1;
@@ -155,17 +148,19 @@ switch ($programStudi) {
             </p>
 
     <form id="contactForm" action="index.php" method="get" novalidate>
+        <p id="formFeedback" aria-live="polite"></p>
         <div class="form-group">
             <label for="nama">Nama Lengkap</label><br>
 
-            <input class="input-form" 
-            type="text"
-            id="nama" 
-            name="Nama" 
-            placeholder="Masukan nama lengkap"
-            minlength="3"
-            maxlength="50" 
-            required>
+            <input
+                class="input-form"
+                type="text"
+                id="nama"
+                name="nama"
+                placeholder="Masukan nama lengkap"
+                minlength="3"
+                maxlength="50"
+                required>
         </div>
 
         <div class="form-group">
@@ -245,6 +240,6 @@ switch ($programStudi) {
     <footer>
         <p>&copy; <?= date("Y") ?> <?php echo $namaMahasiswa; ?> [<?= $nim ?>]</p>
     </footer>
-    <script src=""script.js></script>
+    <script src="script.js"></script>
 </body>
 </html>

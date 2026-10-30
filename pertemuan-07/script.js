@@ -35,17 +35,21 @@ contactForm.addEventListener("submit", (event) => {
   } 
  
   const email = emailInput.value.trim(); 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailPattern.test(email)) { 
     formFeedback.textContent = "Masukkan alamat email yang valid."; 
     return; 
   } 
  
-  const semester = Number(semesterInput.value); 
-  if (semesterInput.value === "" || semester < 1 || semester > 14) { 
-    formFeedback.textContent = "Semester harus diisi dengan angka 1 sampai 14."; 
-    return; 
-  } 
+  const semester = Number(semesterInput.value);
+  if (semesterInput.value === "" ||
+    !Number.isInteger(semester) ||
+    semester < 1 ||
+    semester > 14) 
+    {
+    formFeedback.textContent = "Semester harus diisi dengan angka 1 sampai 14.";
+    return;
+  }
  
   const tanggal = tanggalInput.value; 
   if (tanggal === "") { 
@@ -61,11 +65,9 @@ contactForm.addEventListener("submit", (event) => {
     return; 
   } 
  
-  const topikDipilih = document.querySelectorAll('input[name="minat"]:checked'); 
-  if (topikDipilih.length === 0) { 
-    formFeedback.textContent = "Pilih minimal satu topik yang diminati."; 
-    return; 
-  } 
+  const topikDipilih = document.querySelectorAll(
+    'input[name="minat"]:checked, input[name="minat[]"]:checked'
+  );
  
   const prodi = prodiInput.value; 
   if (prodi === "") { 
