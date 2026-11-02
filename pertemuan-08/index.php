@@ -1,9 +1,29 @@
+<?php
+// P8: PHP pada website Nadé Crochet
+
+$tahun = date("Y");
+$namaWebsite = "Nadé Crochet";
+
+$pesanKonfirmasi = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $nama = htmlspecialchars($_POST["nama"]);
+    $email = htmlspecialchars($_POST["email"]);
+    $telepon = htmlspecialchars($_POST["telepon"]);
+    $produk = htmlspecialchars($_POST["produk"]);
+    $pesan = htmlspecialchars($_POST["pesan"]);
+
+    $pesanKonfirmasi = "Terima kasih, " . $nama .
+                       "! Pendaftaran kamu berhasil.";
+}
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nadé Crochet</title>
+    <title><?= $namaWebsite ?></title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -204,10 +224,11 @@
         </section>
 
         <!-- Bagian Registration -->
-         <section id="registration">
-            <h2>Registration</h2>
-    <p>Silakan isi formulir untuk melakukan pemesanan atau bertanya tentang produk.</p>
-    <form action="proses.php" method="POST">
+    <section id="registration">
+        <h2>Registration</h2>
+        <p>Silakan isi formulir untuk melakukan pemesanan atau bertanya tentang produk.</p>
+        
+    <form action="index.php#registration" method="POST">
         <label for="nama">Nama Lengkap</label>
         <input type="text" id="nama" name="nama" required>
 
@@ -228,11 +249,15 @@
         <textarea id="pesan" name="pesan"></textarea>
         <button type="submit">Kirim Pendaftaran</button>
     </form>
+        <?php if ($pesanKonfirmasi != ""): ?>
+            <p class="success-message">
+        <?= $pesanKonfirmasi ?></p>
+        <?php endif; ?>
          </section>   
         <!-- Bagian Footer -->
         <footer>
             <p>
-                &copy; 2622500007_Nadiyah Salma_SI1A_UTS Pemrograman Web Dasar
+                &copy; <?= $tahun ?> 2622500007_Nadiyah Salma_SI1A_UTS Pemrograman Web Dasar
             </p>
         </footer>
 </main>

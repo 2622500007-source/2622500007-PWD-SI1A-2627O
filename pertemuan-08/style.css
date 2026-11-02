@@ -452,3 +452,11 @@ nav a.active {
 .main-content footer {
     margin-top: auto;
 }
+
+.success-message {
+    background-color: #E3E9DC;
+    color: #49382E;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
