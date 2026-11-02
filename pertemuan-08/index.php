@@ -1,18 +1,39 @@
 <?php
-// P8: PHP pada website Nadé Crochet
 
 $tahun = date("Y");
 $namaWebsite = "Nadé Crochet";
-
 $pesanKonfirmasi = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $nama = htmlspecialchars(
+        $_POST["nama"] ?? "",
+        ENT_QUOTES,
+        "UTF-8"
+    );
 
-    $nama = htmlspecialchars($_POST["nama"]);
-    $email = htmlspecialchars($_POST["email"]);
-    $telepon = htmlspecialchars($_POST["telepon"]);
-    $produk = htmlspecialchars($_POST["produk"]);
-    $pesan = htmlspecialchars($_POST["pesan"]);
+    $email = htmlspecialchars(
+        $_POST["email"] ?? "",
+        ENT_QUOTES,
+        "UTF-8"
+    );
+
+    $telepon = htmlspecialchars(
+        $_POST["telepon"] ?? "",
+        ENT_QUOTES,
+        "UTF-8"
+    );
+
+    $produk = htmlspecialchars(
+        $_POST["produk"] ?? "",
+        ENT_QUOTES,
+        "UTF-8"
+    );
+
+    $pesan = htmlspecialchars(
+        $_POST["pesan"] ?? "",
+        ENT_QUOTES,
+        "UTF-8"
+    );
 
     $pesanKonfirmasi = "Terima kasih, " . $nama .
                        "! Pendaftaran kamu berhasil.";
@@ -95,19 +116,68 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </section>
 
         <!-- Bagian Profile -->
-        <section id="profile">
-            <h2>About Nadé Crochet</h2>
-            <img src="img/owner-profil.jpeg" alt="Foto Pemilik">
+        <section id="profile" class="profile-section">
+        <div class="section-heading">
+        <p class="eyebrow">THE STORY BEHIND THE STITCH</p>
+        <h2>Meet the Maker</h2>
+        <p>Little stories, handmade with love.</p>
+    </div>
+
+        <div class="profile-card">
+        <div class="profile-photo">
+        <img src="img/owner-profil.jpeg"
+            alt="Pemilik Nadé Crochet">
+
+        <div class="photo-caption">
+        <span>♡</span> The Maker
+        </div>
+        </div>
+
+        <div class="profile-info">
+            <p class="profile-label">HELLO, NICE TO MEET YOU!</p>
+            <h3>Hi, I'm Nadiyah.</h3>
+            <p class="profile-description">
+                Selamat datang di dunia kecil Nadé Crochet!
+                Saya percaya bahwa setiap rajutan memiliki
+                cerita dan kehangatannya sendiri.
+            </p>
+
             <p>
                 Nadé Crochet merupakan usaha kerajinan tangan
                 yang berfokus pada produk rajutan handmade.
-                Usaha ini dibuat berdasarkan kecintaan terhadap
-                seni merajut dan kreativitas.
+                Berawal dari kecintaan terhadap seni merajut
+                dan kreativitas, setiap karya dibuat dengan
+                penuh ketelitian, kesabaran, dan kasih sayang.
             </p>
-            <h3>Profile</h3>
-            <p>Nama: Nadiyah Salma</p>
-            <p>Program Studi: Sistem Informasi</p>
-        </section>
+
+            <div class="profile-details">
+                <div>
+                    <span>OWNER</span>
+                    <strong>Nadiyah Salma</strong>
+                </div>
+
+                <div>
+                    <span>STUDY PROGRAM</span>
+                    <strong>Sistem Informasi</strong>
+                </div>
+
+                <div>
+                    <span>BRAND</span>
+                    <strong>Nadé Crochet</strong>
+                </div>
+            </div>
+
+            <p class="profile-signature">
+                Made with love, stitch by stitch. ♡
+            </p>
+        </div>
+        </div>
+    <div class="profile-quote">
+        <span>“</span>
+        Every stitch holds a little piece of love.
+        <span>”</span>
+    </div>
+</section>
 
         <!-- Bagian Produk -->
          <section id="produk">
@@ -227,7 +297,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section id="registration">
         <h2>Registration</h2>
         <p>Silakan isi formulir untuk melakukan pemesanan atau bertanya tentang produk.</p>
-        
+
     <form action="index.php#registration" method="POST">
         <label for="nama">Nama Lengkap</label>
         <input type="text" id="nama" name="nama" required>

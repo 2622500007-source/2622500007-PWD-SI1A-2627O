@@ -1,52 +1,72 @@
+// =========================
+// NAVIGASI WEBSITE
+// =========================
 
-// Mengambil semua menu navigasi
-const menuLinks = document.querySelectorAll(
-    "nav a, .hero-button"
-);
-
-// Mengambil semua bagian konten
 const sections = document.querySelectorAll("main section");
+const menuLinks = document.querySelectorAll("nav a");
+const heroButton = document.querySelector(".hero-button");
 
-// Menampilkan halaman Home saat website dibuka
-sections.forEach(section => {
-    section.hidden = true;
-});
+function showSection(targetId) {
 
-document.querySelector("#home").hidden = false;
+    sections.forEach(section => {
+        section.hidden = section.id !== targetId;
+    });
 
-// Memberikan fungsi pada setiap menu
+    menuLinks.forEach(link => {
+        link.classList.toggle(
+            "active",
+            link.getAttribute("href") === "#" + targetId
+        );
+    });
+
+    history.replaceState(null, "", "#" + targetId);
+}
+
+// Navigasi sidebar
 menuLinks.forEach(link => {
 
     link.addEventListener("click", function(event) {
 
-        // Mencegah halaman berpindah secara default
         event.preventDefault();
 
-        // Mengambil ID tujuan menu
-        const targetId = this.getAttribute("href");
+        const targetId = this.getAttribute("href").substring(1);
 
-        // Menyembunyikan semua bagian
-        sections.forEach(section => {
-            section.hidden = true;
-        });
-
-        // Menampilkan bagian yang dipilih
-        document.querySelector(targetId).hidden = false;
-
-        // Menghilangkan status aktif dari semua menu
-        menuLinks.forEach(item => {
-            item.classList.remove("active");
-        });
-
-        // Memberikan status aktif pada menu yang dipilih
-        this.classList.add("active");
+        showSection(targetId);
 
     });
 
 });
 
+// Tombol Explore Collection
+if (heroButton) {
 
-// FITUR FILTER PRODUK
+    heroButton.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        showSection("produk");
+
+    });
+
+}
+
+// Menentukan halaman pertama
+const successMessage = document.querySelector(".success-message");
+
+const initialSection = successMessage
+    ? "registration"
+    : (location.hash.replace("#", "") || "home");
+
+const validSection = document.getElementById(initialSection)
+    ? initialSection
+    : "home";
+
+showSection(validSection);
+
+
+// =========================
+// FILTER PRODUK
+// =========================
 
 const filterButtons = document.querySelectorAll(".filter");
 const productCards = document.querySelectorAll(".product-card");
@@ -65,14 +85,11 @@ filterButtons.forEach(button => {
 
         productCards.forEach(product => {
 
-            if (
+            const isMatch =
                 category === "all" ||
-                product.dataset.category === category
-            ) {
-                product.style.display = "block";
-            } else {
-                product.style.display = "none";
-            }
+                product.dataset.category === category;
+
+            product.hidden = !isMatch;
 
         });
 
