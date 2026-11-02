@@ -44,7 +44,7 @@ if (heroButton) {
 
         event.preventDefault();
 
-        showSection("produk");
+        showSection("product");
 
     });
 
@@ -65,7 +65,7 @@ showSection(validSection);
 
 
 // =========================
-// FILTER PRODUK
+// FILTER PRODUCT
 // =========================
 
 const filterButtons = document.querySelectorAll(".filter");

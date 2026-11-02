@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         "UTF-8"
     );
 
-    $produk = htmlspecialchars(
-        $_POST["produk"] ?? "",
+    $product = htmlspecialchars(
+        $_POST["product"] ?? "",
         ENT_QUOTES,
         "UTF-8"
     );
@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#profile">Profile</a></li>
-                <li><a href="#produk">Produk</a></li>
+                <li><a href="#product">Product</a></li>
                 <li><a href="#registration">Registration</a></li>
             </ul>
         </nav>
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             dan penuh kehangatan.
         </p>
 
-        <a href="#produk" class="hero-button">
+        <a href="#product" class="hero-button">
             Explore Collection →
         </a>
     </div>
@@ -179,8 +179,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
 </section>
 
-        <!-- Bagian Produk -->
-         <section id="produk">
+        <!-- Bagian Product -->
+         <section id="product">
             <h2>Our Products</h2>
     <p>Temukan berbagai koleksi rajutan handmade dari Nadé Crochet.</p>
     <div class="product-filter">
@@ -198,7 +198,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <p>Rp85.000</p>
         </div>
 
-        <!-- Produk Amigurumi 2 -->
+        <!-- Product Amigurumi 2 -->
         <div class="product-card" data-category="amigurumi">
             <img src="img/doltie.jpeg" alt="Boneka rajut">
             <h3>Little Crochet Friends</h3>
@@ -308,8 +308,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <label for="telepon">Nomor Telepon</label>
         <input type="text" id="telepon" name="telepon" required>
 
-        <label for="produk">Produk yang Diminati</label>
-        <select id="produk" name="produk">
+        <label for="product">Product yang Diminati</label>
+        <select id="product" name="product">
             <option value="Amigurumi">Amigurumi</option>
             <option value="Crochet Keychain">Crochet Keychain</option>
             <option value="Crochet Bouquet">Crochet Bouquet</option>
