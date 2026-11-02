@@ -1,0 +1,25 @@
+* {
+        box-sizing: border-box;
+    }
+  /* Bagian Header */  
+    header {
+    display: flex;
+    align-items: center;
+    gap: 20px; /*untuk memberikan jarak antar elemen di dalam Flexbox*/
+    } 
+    img {
+    width: 100px;
+    border-radius: 50%;
+    }
+    nav ul {
+        list-style: none;
+        display:flex;
+        gap: 20px;
+        background-color: #D9C4AC;
+    }
+    nav a {
+        list-style: none;
+        display:flex;
+        gap: 20px;
+        background-color: #D9C4AC;
+    }
