@@ -2,38 +2,63 @@
 $tahun = date("Y");
 $namaWebsite = "Nadé Crochet";
 $pesanKonfirmasi = "";
+$pesanGagal = "";
+$statusPendaftaran = "";
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nama = htmlspecialchars(
-        $_POST["nama"] ?? "",
-        ENT_QUOTES,
-        "UTF-8"
-    );
 
-    $email = htmlspecialchars(
-        $_POST["email"] ?? "",       ENT_QUOTES,
-        "UTF-8"
-    );
+    $nama = trim($_POST["nama"] ?? "");
+    $email = trim($_POST["email"] ?? "");
+    $telepon = trim($_POST["telepon"] ?? "");
+    $product = trim($_POST["product"] ?? "");
+    $pesan = trim($_POST["pesan"] ?? "");
 
-    $telepon = htmlspecialchars(
-        $_POST["telepon"] ?? "",
-        ENT_QUOTES,
-        "UTF-8"
-    );
+    // Validasi nama
+    if ($nama === "" || mb_strlen($nama) < 3) {
+        $pesanGagal = "Nama lengkap wajib diisi minimal 3 karakter.";
+    }
 
-    $product = htmlspecialchars(
-        $_POST["product"] ?? "",
-        ENT_QUOTES,
-        "UTF-8"
-    );
+    // Validasi email
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $pesanGagal = "Format email tidak valid. Silakan periksa kembali.";
+    }
 
-    $pesan = htmlspecialchars(
-        $_POST["pesan"] ?? "",
-        ENT_QUOTES,
-        "UTF-8"
-    );
+    // Validasi nomor telepon
+    elseif (!preg_match("/^[0-9]{10,15}$/", $telepon)) {
+        $pesanGagal = "Nomor telepon harus terdiri dari 10 sampai 15 angka.";
+    }
 
-    $pesanKonfirmasi = "Terima kasih, " . $nama .
-                       "! Pendaftaran kamu berhasil.";
+    // Validasi pilihan produk
+    elseif (!in_array($product, [
+        "Amigurumi",
+        "Crochet Keychain",
+        "Crochet Bouquet"
+    ], true)) {
+        $pesanGagal = "Silakan pilih jenis crochet terlebih dahulu.";
+    }
+
+    // Validasi pesan
+    elseif ($pesan === "" || mb_strlen($pesan) < 5) {
+        $pesanGagal = "Pesan wajib diisi minimal 5 karakter.";
+    }
+
+    // Jika semua validasi berhasil
+    else {
+        $namaAman = htmlspecialchars(
+            $nama,
+            ENT_QUOTES,
+            "UTF-8"
+        );
+
+        $pesanKonfirmasi = "Terima kasih, " . $namaAman .
+                           "! Pendaftaran kamu berhasil.";
+
+        $statusPendaftaran = "success";
+    }
+
+    if ($pesanGagal !== "") {
+        $statusPendaftaran = "error";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -46,13 +71,47 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 
 <body>
+    <!-- WELCOME OVERLAY -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+    <div class="welcome-card">
+
+        <p class="welcome-eyebrow">
+            ✿ WELCOME TO ✿
+        </p>
+
+        <img src="img/bg-rajut.jpg"
+             alt="Koleksi rajutan Nadé Crochet"
+             class="welcome-image">
+
+        <h1>
+            A Little World<br>
+            <span>of Handmade Love</span>
+        </h1>
+
+        <p class="welcome-description">
+            Little things, made with love and joy.
+        </p>
+
+        <button id="enterWebsite">
+            Enter My Little World →
+        </button>
+
+        <p class="welcome-footer">
+            Handmade with love, stitch by stitch ♡
+        </p>
+     </div>
+    </div>
+
+
     <div class="container">
     <aside class="sidebar">
-        <div class="brand">
-            <img src="img/Nadé Crochet Yarn.png" alt="Logo Nadé Crochet">
-            <h2>Nadé Crochet</h2>
-            <p>Handmade with Love and Joy</p>
-        </div>
+    <div class="brand">
+    <a href="#home" class="brand-logo" aria-label="Kembali ke Home">
+        <img src="img/Nadé Crochet Yarn.png" alt="Logo Nadé Crochet">
+    </a>
+    <h2>Nadé Crochet</h2>
+    <p>Handmade with Love and Joy</p>
+    </div>
 
         <nav>
             <ul>
@@ -131,87 +190,100 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </header>
 
         <!-- Bagian Home -->
-         <section id="home" class="home-section">
-        <div class="hero">
-        <div class="hero-text">
-        <p class="eyebrow">A LITTLE WORLD OF CROCHET.</p>
-                    
-        <h1>Little things,<br>
-            <span>made with love.</span>
-        </h1>
-
-        <p>
-            Selamat datang di dunia kecil Nadé Crochet.
-            Temukan berbagai karya rajutan handmade
-            yang dibuat dengan teliti, kreatif,
-            dan penuh kehangatan.
+        <section id="home" class="home-section">
+    <div class="hero">
+    <div class="hero-text">
+        <p class="eyebrow">
+            A LITTLE WORLD OF CROCHET.
         </p>
+            <h1>
+                Little things,<br>
+                <span>made with love.</span>
+            </h1>
 
-        <a href="#product" class="hero-button">
-            Explore Collection →
-        </a>
-    </div>
+            <p>
+                Selamat datang di dunia kecil Nadé Crochet.
+                Temukan berbagai karya rajutan handmade
+                yang dibuat dengan teliti, kreatif,
+                dan penuh kehangatan.
+            </p>
 
-    <div class="hero-image">
-        <img src="img/lovely-things.jpeg"
-             alt="Koleksi rajutan Nadé Crochet">
-             </div>
+            <a href="#product" class="hero-button">
+                Explore Collection →
+            </a>
+
         </div>
+
+        <div class="hero-image">
+            <img src="img/lovely-things.jpeg"
+                 alt="Koleksi rajutan Nadé Crochet">
+
+            <div class="image-caption">
+                Little handmade treasures ♡
+            </div>
+        </div>
+    </div>
 
     <div class="highlight">
-        <div>
-            <h3>♡ Handmade with Love</h3>
-            <p>Setiap karya dibuat dengan sepenuh hati.</p>
-        </div>
-
-        <div>
-            <h3>✿ Unique Creation</h3>
-            <p>Memiliki sentuhan kreatif dan personal.</p>
-        </div>
-
-        <div>
-            <h3>♧ Special Gift</h3>
-            <p>Hadiah manis untuk orang tersayang.</p>
-        </div>
+    <div class="highlight-card">
+        <h3>♡ Handmade with Love</h3>
+        <p>Setiap karya dibuat dengan sepenuh hati.</p>
     </div>
+
+    <div class="highlight-card">
+        <h3>✿ Unique Creation</h3>
+        <p>Memiliki sentuhan kreatif dan personal.</p>
+    </div>
+
+    <div class="highlight-card">
+        <h3>♧ Special Gift</h3>
+        <p>Hadiah manis untuk orang tersayang.</p>
+    </div>
+</div>
 </section>
 
+
         <!-- Bagian Profile -->
-        <section id="profile" class="profile-section">
-        <div class="section-heading">
+    <section id="profile" class="profile-section">
+    <div class="section-heading">
         <p class="eyebrow">THE STORY BEHIND THE STITCH</p>
         <h2>Meet the Maker</h2>
-        <p>Little stories, handmade with love.</p>
+        <p>A little curiosity, turned into something lovely.</p>
     </div>
 
-        <div class="profile-card">
-        <div class="profile-photo">
-        <img src="img/owner-profil.jpeg"
-            alt="Pemilik Nadé Crochet">
+    <!-- INTRODUCTION -->
+    <div class="profile-card">
 
-        <div class="photo-caption">
-        <span>♡</span> The Maker
-        </div>
+        <div class="profile-photo">
+            <img src="img/owner-profil.jpeg"
+                 alt="Pemilik Nadé Crochet">
+
+            <div class="photo-caption">
+                <span>♡</span> The Maker
+            </div>
         </div>
 
         <div class="profile-info">
+
             <p class="profile-label">HELLO, NICE TO MEET YOU!</p>
             <h3>Hi, I'm Nadiyah.</h3>
+
             <p class="profile-description">
-                Selamat datang di dunia kecil Nadé Crochet!
-                Saya percaya bahwa setiap rajutan memiliki
-                cerita dan kehangatannya sendiri.
+                I'm the person behind Nadé Crochet, a little
+                creative space filled with handmade creations
+                and lovely little ideas.
             </p>
 
             <p>
-                Nadé Crochet merupakan usaha kerajinan tangan
-                yang berfokus pada produk rajutan handmade.
-                Berawal dari kecintaan terhadap seni merajut
-                dan kreativitas, setiap karya dibuat dengan
-                penuh ketelitian, kesabaran, dan kasih sayang.
+                Berawal dari rasa penasaran untuk mencoba hal
+                baru, saya menemukan kesenangan dalam seni
+                merajut. Kini, setiap karya menjadi bagian dari
+                perjalanan kecil saya dalam bereksplorasi
+                dan berkreasi.
             </p>
 
             <div class="profile-details">
+
                 <div>
                     <span>OWNER</span>
                     <strong>Nadiyah Salma</strong>
@@ -226,19 +298,122 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <span>BRAND</span>
                     <strong>Nadé Crochet</strong>
                 </div>
+
             </div>
 
             <p class="profile-signature">
-                Made with love, stitch by stitch. ♡
+                A Curious Soul, A Creative Heart. ♡
+            </p>
+
+        </div>
+    </div>
+
+    <!-- BRAND STORY -->
+    <div class="profile-story">
+
+        <div class="story-heading">
+            <p class="eyebrow">A LITTLE STORY</p>
+            <h3>From Curiosity to Creativity</h3>
+        </div>
+
+        <p>
+            Nadé Crochet berawal dari keinginan sederhana untuk
+            mencoba sesuatu yang baru. Awalnya hanya kegiatan
+            untuk mengisi waktu luang, tetapi perlahan merajut
+            menjadi aktivitas yang menyenangkan dan membuat
+            saya terus ingin bereksplorasi.
+        </p>
+
+        <p>
+            Bagi saya, handmade memiliki keistimewaan tersendiri.
+            Setiap proses membutuhkan kesabaran, ketelitian,
+            dan kreativitas. Dari benang sederhana, sesuatu
+            yang unik dan bermakna dapat tercipta.
+        </p>
+
+        <p>
+            Melalui Nadé Crochet, saya ingin berbagi hasil
+            karya kecil yang dibuat dengan sepenuh hati.
+            Setiap rajutan mungkin sederhana, tetapi selalu
+            memiliki cerita di baliknya.
+        </p>
+
+    </div>
+
+    <!-- HANDMADE PHILOSOPHY -->
+    <div class="profile-philosophy">
+
+        <div class="story-heading">
+            <p class="eyebrow">WHAT MAKES HANDMADE SPECIAL</p>
+            <h3>Our Handmade Philosophy</h3>
+            <p>Every creation has its own little meaning.</p>
+        </div>
+
+        <div class="philosophy-grid">
+
+            <div class="philosophy-card">
+                <span class="philosophy-icon">♡</span>
+                <h4>Patience</h4>
+                <p>
+                    Setiap karya membutuhkan waktu,
+                    kesabaran, dan perhatian pada
+                    setiap detailnya.
+                </p>
+            </div>
+
+            <div class="philosophy-card">
+                <span class="philosophy-icon">✿</span>
+                <h4>Creativity</h4>
+                <p>
+                    Selalu ada ruang untuk mencoba
+                    hal baru, bereksperimen, dan
+                    mengembangkan ide.
+                </p>
+            </div>
+
+            <div class="philosophy-card">
+                <span class="philosophy-icon">♧</span>
+                <h4>Uniqueness</h4>
+                <p>
+                    Setiap karya handmade memiliki
+                    karakter dan keistimewaan
+                    tersendiri.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- BEHIND EVERY STITCH -->
+    <div class="profile-process">
+
+        <div class="process-text">
+            <p class="eyebrow">BEHIND EVERY STITCH</p>
+            <h3>Little Details, Made with Care.</h3>
+            <p>
+                Dari memilih benang, menentukan warna,
+                hingga merangkai setiap tusukan rajut,
+                semuanya menjadi bagian dari proses
+                kreatif yang menyenangkan.
             </p>
         </div>
+
+        <div class="process-decoration">
+            <span>🧶</span>
+            <span>♡</span>
+            <span>✿</span>
         </div>
+
+    </div>
+
+    <!-- CLOSING QUOTE -->
     <div class="profile-quote">
         <span>“</span>
         Every stitch holds a little piece of love.
         <span>”</span>
     </div>
 </section>
+
 
         <!-- Bagian Product -->
          <section id="product">
@@ -360,30 +535,83 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <p>Silakan isi formulir untuk melakukan pemesanan atau bertanya tentang produk.</p>
 
     <form action="index.php#registration" method="POST">
-        <label for="nama">Nama Lengkap</label>
-        <input type="text" id="nama" name="nama" required>
+    <label for="nama">Nama Lengkap</label>
+    <input
+        type="text"
+        id="nama"
+        name="nama"
+        placeholder="Masukkan nama lengkap"
+        required
+        minlength="3"
+    >
 
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+    <label for="email">Email</label>
+    <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="contoh@email.com"
+        required
+    >
 
-        <label for="telepon">Nomor Telepon</label>
-        <input type="text" id="telepon" name="telepon" required>
+    <label for="telepon">Nomor Telepon</label>
+    <input
+        type="tel"
+        id="telepon"
+        name="telepon"
+        placeholder="Masukkan nomor telepon"
+        inputmode="numeric"
+        pattern="[0-9]{10,15}"
+        minlength="10"
+        maxlength="15"
+        title="Nomor telepon harus terdiri dari 10 sampai 15 angka."
+        required
+    >
 
-        <label for="product">Product yang Diminati</label>
-        <select id="product" name="product">
-            <option value="Amigurumi">Amigurumi</option>
-            <option value="Crochet Keychain">Crochet Keychain</option>
-            <option value="Crochet Bouquet">Crochet Bouquet</option>
-        </select>
+    <label for="product">Pilihan Jenis Crochet</label>
+    <select id="product" name="product" required>
+        <option value="" selected disabled>-- Pilih jenis crochet --</option>
+        <option value="Amigurumi">Amigurumi</option>
+        <option value="Crochet Keychain">Crochet Keychain</option>
+        <option value="Crochet Bouquet">Crochet Bouquet</option>
+    </select>
 
-        <label for="pesan">Pesan</label>
-        <textarea id="pesan" name="pesan"></textarea>
-        <button type="submit">Kirim Pendaftaran</button>
+    <label for="pesan">Pesan</label>
+    <textarea
+        id="pesan"
+        name="pesan"
+        placeholder="Tuliskan pesanan atau pertanyaan kamu..."
+        required
+        minlength="5"
+    ></textarea>
+
+    <button type="submit" name="submit_registration">
+        Kirim Pendaftaran
+    </button>
     </form>
-        <?php if ($pesanKonfirmasi != ""): ?>
-            <p class="success-message">
-        <?= $pesanKonfirmasi ?></p>
-        <?php endif; ?>
+
+    <audio id="successSound" preload="auto">
+    <source src="audio/sound2.mp3" type="audio/mpeg">
+    </audio>
+
+    <?php if ($pesanKonfirmasi !== ""): ?>
+    <div class="notification-overlay" id="successNotification">
+        <div class="notification-box">
+            <div class="notification-icon">♡</div>
+            <h2>Pendaftaran Berhasil!</h2>
+            <p><?= $pesanKonfirmasi ?></p>
+            <button type="button" id="closeNotification">
+                Mengerti ♡
+            </button>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <?php if ($pesanGagal !== ""): ?>
+    <p class="error-message">
+        <?= htmlspecialchars($pesanGagal, ENT_QUOTES, "UTF-8") ?>
+    </p>
+    <?php endif; ?>
          </section>   
         <!-- Bagian Footer -->
         <footer>
@@ -391,6 +619,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 &copy; <?= $tahun ?> 2622500007_Nadiyah Salma_SI1A_UTS Pemrograman Web Dasar
             </p>
         </footer>
+
+    <button id="backToTop" title="Back to Top"
+        aria-label="Kembali ke atas">
+    ↑
+    </button>
 </main>
 </div>
 <script src="script.js"></script>

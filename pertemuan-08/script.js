@@ -36,6 +36,14 @@ menuLinks.forEach(link => {
 
 });
 
+// Navigasi Logo kembali ke Home
+const brandLogo = document.querySelector(".brand-logo");
+
+brandLogo.addEventListener("click", function(event) {
+    event.preventDefault();
+    showSection("home");
+});
+
 // Tombol Explore Collection
 if (heroButton) {
 
@@ -236,3 +244,78 @@ playerLauncher.addEventListener("click", function() {
     );
 
 });
+
+/* =========================
+   BACK TO TOP FUNCTION
+========================= */
+
+const backToTop = document.getElementById("backToTop");
+
+// Tombol muncul saat halaman di-scroll
+window.addEventListener("scroll", function() {
+
+    if (window.scrollY > 300) {
+        backToTop.classList.add("show");
+    } else {
+        backToTop.classList.remove("show");
+    }
+
+});
+
+// Kembali ke bagian paling atas
+backToTop.addEventListener("click", function() {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+/* =========================
+   WELCOME OVERLAY
+========================= */
+
+const welcomeOverlay = document.getElementById("welcomeOverlay");
+const enterWebsite = document.getElementById("enterWebsite");
+
+// Periksa apakah pengunjung sudah membuka website
+if (sessionStorage.getItem("nadeVisited") === "yes") {
+    welcomeOverlay.classList.add("hide");
+}
+
+// Tombol masuk website
+enterWebsite.addEventListener("click", function() {
+
+    welcomeOverlay.classList.add("hide");
+
+    sessionStorage.setItem("nadeVisited", "yes");
+
+});
+// =========================
+// SUCCESS NOTIFICATION
+// =========================
+
+const successNotification = document.getElementById("successNotification");
+const closeNotification = document.getElementById("closeNotification");
+const successSound = document.getElementById("successSound");
+
+if (successNotification && closeNotification) {
+
+    // Sound saat pendaftaran berhasil
+    if (successSound) {
+        successSound.volume = 0.5;
+        successSound.play().catch(() => {});
+    }
+
+    // Tombol Mengerti
+    closeNotification.addEventListener("click", function() {
+
+        successNotification.classList.add("hide");
+
+        setTimeout(() => {
+            successNotification.remove();
+        }, 500);
+
+    });
+
+}

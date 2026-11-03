@@ -1017,3 +1017,908 @@ section {
     display: block;
     margin: 0 auto;
 }
+
+/* =========================
+   HOME MAKEOVER
+   NADE CROCHET
+========================= */
+
+/* HERO TEXT */
+
+.home-section .hero {
+    gap: 40px;
+    padding: 35px 10px 40px;
+}
+
+.hero-text .eyebrow {
+    display: inline-block;
+    padding: 8px 13px;
+    background-color: #E9DDCA;
+    border-radius: 20px;
+    letter-spacing: 2px;
+}
+
+.hero-text h1 {
+    line-height: 1.2;
+    margin-top: 18px;
+}
+
+.hero-text h1 span {
+    color: #68765F;
+}
+
+.hero-text > p:not(.eyebrow) {
+    line-height: 1.9;
+    max-width: 600px;
+}
+
+/* HERO BUTTON */
+
+.home-section .hero-button {
+    padding: 14px 24px;
+    border-radius: 25px;
+    box-shadow: 0 5px 12px rgba(73, 56, 46, 0.10);
+}
+
+.home-section .hero-button:hover {
+    transform: translateY(-3px);
+}
+
+/* HERO IMAGE */
+
+.home-section .hero-image {
+    position: relative;
+}
+
+.home-section .hero-image img {
+    border: 5px solid #FFFDF8;
+    box-shadow: 0 10px 25px rgba(73, 56, 46, 0.12);
+    transition: 0.3s ease;
+}
+
+.home-section .hero-image img:hover {
+    transform: translateY(-5px);
+}
+
+/* IMAGE CAPTION */
+
+.image-caption {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+
+    padding: 9px 15px;
+
+    background-color: rgba(255, 253, 248, 0.92);
+    color: #68765F;
+
+    border-radius: 20px;
+    font-size: 11px;
+    font-style: italic;
+}
+
+/* HIGHLIGHT CARDS */
+
+.home-section .highlight {
+    gap: 18px;
+    padding: 25px 0;
+    border-top: 1px solid #D3BEA5;
+}
+
+.home-section .highlight-card {
+    padding: 22px 18px;
+
+    background-color: rgba(255, 253, 248, 0.75);
+
+    border: 1px solid #E9DDCA;
+    border-radius: 15px;
+
+    transition: 0.3s ease;
+}
+
+.home-section .highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(73, 56, 46, 0.08);
+}
+
+.home-section .highlight-card h3 {
+    color: #68765F;
+    font-size: 15px;
+}
+
+.home-section .highlight-card p {
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* RESPONSIVE HOME */
+
+@media screen and (max-width: 700px) {
+
+    .home-section .hero {
+        padding: 20px 0 30px;
+    }
+
+    .image-caption {
+        font-size: 10px;
+    }
+
+    .home-section .highlight {
+        gap: 12px;
+    }
+
+}
+
+/* LOGO CLICKABLE */
+
+.brand-logo {
+    display: inline-block;
+    border-radius: 50%;
+    transition: 0.3s ease;
+}
+
+.brand-logo:hover {
+    transform: scale(1.08);
+}
+
+.brand-logo img {
+    cursor: pointer;
+}
+
+/* =========================
+   BACK TO TOP BUTTON
+========================= */
+
+#backToTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #68765F;
+    color: #FFFDF8;
+
+    font-size: 23px;
+    cursor: pointer;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#backToTop:hover {
+    background-color: #49382E;
+    transform: translateY(-5px);
+}
+
+/* =========================
+   MICRO ANIMATION
+========================= */
+
+/* Animasi tombol */
+button,
+.hero-button,
+.filter {
+    transition: all 0.3s ease;
+}
+
+button:hover,
+.hero-button:hover,
+.filter:hover {
+    transform: translateY(-3px);
+}
+
+/* Animasi kartu produk */
+.product-card {
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(73, 56, 46, 0.12);
+}
+
+/* Animasi gambar produk */
+.product-card img {
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.03);
+}
+
+/* Animasi navigasi sidebar */
+.sidebar nav a {
+    transition: all 0.3s ease;
+}
+
+.sidebar nav a:hover {
+    transform: translateX(4px);
+}
+
+/* Mengurangi gerakan untuk pengguna yang membatasi animasi */
+@media (prefers-reduced-motion: reduce) {
+    button,
+    .hero-button,
+    .filter,
+    .product-card,
+    .product-card img,
+    .sidebar nav a {
+        transition: none;
+    }
+
+    button:hover,
+    .hero-button:hover,
+    .filter:hover,
+    .product-card:hover,
+    .product-card:hover img,
+    .sidebar nav a:hover {
+        transform: none;
+    }
+}
+
+
+/* =========================
+   PROFILE MAKEOVER
+========================= */
+
+/* Intro profile */
+.profile-section .profile-card {
+    display: grid;
+    grid-template-columns: 0.8fr 1.4fr;
+    align-items: center;
+    gap: 35px;
+    padding: 35px;
+    margin-bottom: 25px;
+}
+
+.profile-section .profile-photo {
+    text-align: center;
+}
+
+.profile-section .profile-photo img {
+    width: 220px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 120px 120px 25px 25px;
+    border: 5px solid #F7F2E9;
+    box-shadow: 0 8px 20px rgba(73, 56, 46, 0.10);
+}
+
+.profile-section .profile-info {
+    min-width: 0;
+}
+
+.profile-section .profile-info > p {
+    line-height: 1.8;
+}
+
+.profile-section .profile-details {
+    margin-top: 22px;
+}
+
+/* Story section */
+.profile-story {
+    padding: 30px 35px;
+    margin-bottom: 25px;
+    background-color: rgba(255, 253, 248, 0.85);
+    border: 1px solid #E9DDCA;
+    border-radius: 18px;
+}
+
+.story-heading {
+    margin-bottom: 20px;
+}
+
+.story-heading h3,
+.profile-process h3 {
+    color: #49382E;
+    font-size: 24px;
+    margin: 8px 0;
+}
+
+.profile-story > p {
+    color: #827366;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 12px;
+}
+
+/* Handmade philosophy */
+.profile-philosophy {
+    padding: 30px 0;
+    margin-bottom: 25px;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.philosophy-card {
+    padding: 25px 20px;
+    text-align: center;
+    background-color: #FFFDF8;
+    border: 1px solid #E9DDCA;
+    border-radius: 16px;
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.philosophy-icon {
+    display: block;
+    font-size: 30px;
+    color: #68765F;
+    margin-bottom: 12px;
+}
+
+.philosophy-card h4 {
+    color: #68765F;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.philosophy-card p {
+    color: #827366;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(73, 56, 46, 0.09);
+}
+
+/* Behind every stitch */
+.profile-process {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding: 30px 35px;
+    margin-bottom: 25px;
+    background-color: #E9DDCA;
+    border-radius: 18px;
+}
+
+.process-text {
+    max-width: 650px;
+}
+
+.process-text > p:last-child {
+    color: #827366;
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.process-decoration {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 30px;
+    color: #68765F;
+}
+
+/* Closing quote */
+.profile-section .profile-quote {
+    margin-top: 0;
+    padding: 22px;
+    border-radius: 15px;
+}
+
+/* Responsive Profile */
+@media screen and (max-width: 700px) {
+
+    .profile-section .profile-card {
+        grid-template-columns: 1fr;
+        padding: 22px;
+        gap: 25px;
+    }
+
+    .profile-section .profile-photo img {
+        width: 180px;
+        height: 210px;
+    }
+
+    .profile-story {
+        padding: 25px 22px;
+    }
+
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-process {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px 22px;
+    }
+
+    .story-heading h3,
+    .profile-process h3 {
+        font-size: 21px;
+    }
+}
+
+
+/* PROFILE PHOTO DECORATION */
+
+.profile-section .profile-photo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.profile-section .profile-photo::before {
+    content: "";
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    background-color: #F7F2E9;
+    border: 1px solid #E9DDCA;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.profile-section .profile-photo img {
+    position: relative;
+    z-index: 1;
+    width: 220px;
+    height: 260px;
+}
+
+.profile-section .photo-caption {
+    position: relative;
+    z-index: 2;
+    margin-top: -12px;
+}
+
+
+/* PROFILE STORY DECORATION */
+
+.profile-story {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        #FFFDF8 75%,
+        #F7F2E9 100%
+    );
+}
+
+.profile-story::after {
+    content: "✿";
+    position: absolute;
+    right: 45px;
+    top: 25px;
+    font-size: 100px;
+    color: #E9DDCA;
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+.profile-story .story-heading,
+.profile-story > p {
+    position: relative;
+    z-index: 1;
+}
+
+.profile-story > p {
+    max-width: 90%;
+    line-height: 2;
+}
+
+
+/* PROFILE CARD MICRO ANIMATION */
+
+.philosophy-card {
+    cursor: default;
+}
+
+.philosophy-card:hover .philosophy-icon {
+    transform: scale(1.15) rotate(-8deg);
+}
+
+.philosophy-icon {
+    transition: transform 0.3s ease;
+}
+
+.profile-process {
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.profile-process:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(73, 56, 46, 0.08);
+}
+
+/* REMOVE PROFILE PHOTO CIRCLE */
+.profile-section .profile-photo::before {
+    display: none;
+}
+
+/* RESTORE SIMPLE PROFILE PHOTO */
+.profile-section .profile-photo {
+    min-height: auto;
+    padding: 25px 0;
+}
+
+.profile-section .profile-photo img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #FFFDF8;
+    box-shadow: 0 8px 22px rgba(73, 56, 46, 0.13);
+    transition: transform 0.3s ease;
+}
+
+.profile-section .profile-photo img:hover {
+    transform: scale(1.04);
+}
+.profile-section .profile-photo::after {
+    content: "✿  Always Curious, Always Creating  ✿";
+    display: block;
+    margin-top: 18px;
+    color: #68765F;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+
+/* PROFILE CARD - SOFT CROCHET PAPER */
+
+.profile-section .profile-card {
+    background-color: #FFFDF8;
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(168, 179, 155, 0.16) 1.5px,
+            transparent 1.8px
+        ),
+        repeating-linear-gradient(
+            135deg,
+            rgba(233, 221, 202, 0.10) 0px,
+            rgba(233, 221, 202, 0.10) 1px,
+            transparent 1px,
+            transparent 9px
+        );
+
+    background-size: 25px 25px, 100% 100%;
+    border: 1px solid #E9DDCA;
+    box-shadow: 0 8px 25px rgba(73, 56, 46, 0.06);
+}
+
+
+/* PROFILE PHOTO CAPTION */
+
+.profile-section .photo-caption {
+    position: static;
+    display: inline-block;
+    margin-top: 15px;
+    padding: 9px 20px;
+    border-radius: 25px;
+    background-color: #49382E;
+    color: #FFFDF8;
+}
+
+/* =========================
+   CENTER PROFILE PHOTO & CAPTION
+========================= */
+
+.profile-section .profile-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.profile-section .photo-caption {
+    position: static;
+    display: block;
+    width: fit-content;
+    margin: 15px auto 0;
+    transform: none;
+    text-align: center;
+}
+
+/* =========================
+   WELCOME OVERLAY
+   NADE CROCHET
+========================= */
+
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(168, 179, 155, 0.13) 2px,
+            transparent 2.5px
+        ),
+        linear-gradient(
+            135deg,
+            #F7F2E9,
+            #E9DDCA
+        );
+
+    background-size: 28px 28px, 100% 100%;
+
+    opacity: 1;
+    visibility: visible;
+
+    transition: opacity 0.6s ease,
+                visibility 0.6s ease;
+}
+
+/* Kartu welcome */
+
+.welcome-card {
+    width: 100%;
+    max-width: 650px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    background-color: #FFFDF8;
+    border: 1px solid #E9DDCA;
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(73, 56, 46, 0.12);
+
+    animation: welcomeAppear 0.8s ease;
+}
+
+/* Tulisan pembuka */
+
+.welcome-eyebrow {
+    color: #68765F;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+/* Foto rajutan */
+
+.welcome-image {
+    width: 100%;
+    height: 260px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+    border: 5px solid #F7F2E9;
+
+    margin-bottom: 20px;
+}
+
+/* Judul */
+
+.welcome-card h1 {
+    color: #49382E;
+    font-size: 35px;
+    line-height: 1.3;
+    margin: 10px 0;
+}
+
+.welcome-card h1 span {
+    color: #68765F;
+}
+
+/* Deskripsi */
+
+.welcome-description {
+    color: #827366;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* Tombol masuk */
+
+#welcomeOverlay button {
+    margin-top: 18px;
+    padding: 14px 28px;
+
+    background-color: #68765F;
+    color: #FFFDF8;
+
+    border: none;
+    border-radius: 25px;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+#welcomeOverlay button:hover {
+    background-color: #49382E;
+    transform: translateY(-3px);
+}
+
+/* Footer */
+
+.welcome-footer {
+    margin-top: 22px;
+    color: #68765F;
+    font-size: 11px;
+    font-style: italic;
+}
+
+/* Animasi masuk */
+
+@keyframes welcomeAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animasi keluar */
+
+.welcome-overlay.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Tampilan HP */
+
+@media screen and (max-width: 600px) {
+
+    .welcome-card {
+        padding: 22px;
+    }
+
+    .welcome-image {
+        height: 200px;
+    }
+
+    .welcome-card h1 {
+        font-size: 27px;
+    }
+
+}
+.success-message {
+    margin-top: 18px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background-color: #E8EFE3;
+    color: #526849;
+    border: 1px solid #A8B39B;
+    line-height: 1.6;
+}
+
+.error-message {
+    margin-top: 18px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background-color: #F8E8E5;
+    color: #9B5148;
+    border: 1px solid #D9AAA2;
+    line-height: 1.6;
+}
+/* SUCCESS NOTIFICATION */
+.notification-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(73, 56, 46, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.notification-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 35px 28px;
+    background-color: #FFFDF8;
+    border: 2px solid #E9DDCA;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(73, 56, 46, 0.18);
+    animation: popUp 0.35s ease;
+}
+
+.notification-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E8EFE3;
+    color: #68765F;
+    border-radius: 50%;
+    font-size: 35px;
+}
+
+.notification-box h2 {
+    color: #68765F;
+    margin-bottom: 12px;
+}
+
+.notification-box p {
+    color: #827366;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+#closeNotification {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 25px;
+    background-color: #68765F;
+    color: #FFFDF8;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#closeNotification:hover {
+    background-color: #49382E;
+    transform: translateY(-2px);
+}
+
+.notification-overlay.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes popUp {
+    from {
+        opacity: 0;
+        transform: scale(0.85);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
