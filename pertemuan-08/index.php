@@ -1,9 +1,7 @@
 <?php
-
 $tahun = date("Y");
 $namaWebsite = "Nadé Crochet";
 $pesanKonfirmasi = "";
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nama = htmlspecialchars(
         $_POST["nama"] ?? "",
@@ -12,8 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     );
 
     $email = htmlspecialchars(
-        $_POST["email"] ?? "",
-        ENT_QUOTES,
+        $_POST["email"] ?? "",       ENT_QUOTES,
         "UTF-8"
     );
 

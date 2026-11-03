@@ -7,7 +7,6 @@ const menuLinks = document.querySelectorAll("nav a");
 const heroButton = document.querySelector(".hero-button");
 
 function showSection(targetId) {
-
     sections.forEach(section => {
         section.hidden = section.id !== targetId;
     });
