@@ -63,48 +63,48 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </ul>
         </nav>
 
-<!-- MINI MUSIC PLAYER -->
-    <div class="mini-player">
-    <audio id="bgMusic" loop>
-    <source src="audio/cozy-lofi.mp3" type="audio/mpeg">
-    </audio>
+        <!-- MINI MUSIC PLAYER -->
+    <div class="music-widget">
 
-    <button id="musicToggle" type="button" title="Play Music">
+        <!-- Tombol buka/tutup player -->
+        <button id="playerLauncher"
+            type="button"
+        title="Open Music Player"
+        aria-expanded="false">
         ♫
-    </button>
+        </button>
 
-    <div class="mini-player-info">
-        <span>A Cozy Moment</span>
-        <small id="musicStatus">Music is off</small>
-    </div>
+        <!-- Panel Music Player -->
+        <div class="mini-player" id="playerPanel" hidden>
 
-    <input
-        type="range"
-        id="volumeControl"
-        min="0"
-        max="1"
-        step="0.1"
-        value="0.3">
-    </div>
-</aside>
+        <audio id="bgMusic" preload="auto">
+            <source src="audio/song1.mp3" type="audio/mpeg">
+        </audio>
 
-    </aside>
+        <audio id="clickSound" preload="auto">
+            <source src="audio/sound1.mp3" type="audio/mpeg">
+        </audio>
 
-    <!-- MUSIC PLAYER -->
-     <div class="music-player">
-        <p class="music-title">♫ A Cozy Moment</p>
-        <p class="music-subtitle">Soft music for you</p>
+        <div class="mini-player-info">
+            <span>A Cozy Moment</span>
+            <small id="musicStatus">♫ Ready to Play ♫</small>
+        </div>
 
-     <audio id="bgMusic" loop>
-        <source src="audio/cozy-lofi.mp3" type="audio/mpeg">
-     </audio>
+        <!-- Kontrol Musik -->
+        <div class="music-navigation">
 
-     <button id="musicToggle" type="button">
-        ♡ Play Music
-     </button>
+            <button id="prevSong" type="button"
+                    aria-label="Previous Song">❮</button>
 
-     <div class="volume-control">
-        <span>♫</span>
+            <button id="playPause" type="button"
+                    aria-label="Play Music">▶</button>
+
+            <button id="nextSong" type="button"
+                    aria-label="Next Song">❯</button>
+
+        </div>
+
+        <!-- Volume -->
         <input
             type="range"
             id="volumeControl"
@@ -112,10 +112,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             max="1"
             step="0.1"
             value="0.3">
-     </div>
-     
-     <p id="musicStatus">Music is off</p>
     </div>
+</div>
+    </aside>
 
     <main class="main-content">
 

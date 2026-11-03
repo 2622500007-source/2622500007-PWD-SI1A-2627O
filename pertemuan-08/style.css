@@ -1,4 +1,3 @@
-
 /* =========================
    PENGATURAN DASAR
 ========================= */
@@ -857,4 +856,164 @@ section {
     width: 100%;
     margin-top: 12px;
     accent-color: #68765F;
+}
+
+/* =========================
+   MUSIC PLAYER NAVIGATION
+========================= */
+
+.music-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+/* Tombol Previous dan Next */
+
+#prevSong,
+#nextSong {
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 12px;
+
+    background-color: #68765F;
+    color: #FFFDF8;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Efek Hover */
+
+#prevSong:hover,
+#nextSong:hover {
+    background-color: #49382E;
+    transform: scale(1.08);
+}
+
+/* Status Musik */
+
+#musicStatus {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+
+    color: #68765F;
+
+    background-color: #F7F2E9;
+    border: 1px solid #D3BEA5;
+    border-radius: 20px;
+
+    padding: 8px 13px;
+
+    min-width: 105px;
+    text-align: center;
+}
+
+/* =========================
+   PERBAIKAN TOMBOL MUSIC PLAYER
+========================= */
+
+/* Logo musik untuk membuka player */
+#playerLauncher {
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 13px;
+
+    background-color: #68765F;
+    color: #FFFDF8;
+
+    font-size: 25px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#playerLauncher:hover {
+    background-color: #49382E;
+    transform: scale(1.05);
+}
+
+/* Tombol Play dan Pause */
+#playPause {
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 13px;
+
+    background-color: #68765F;
+    color: #FFFDF8;
+
+    font-size: 23px;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#playPause:hover {
+    background-color: #49382E;
+    transform: scale(1.05);
+}
+
+/* =========================
+   SIDEBAR NAVIGATION DESIGN
+========================= */
+
+.sidebar nav {
+    width: 100%;
+    border: 1px solid #CBB69B;
+    border-radius: 20px;
+    padding: 15px;
+    background-color: rgba(255, 253, 248, 0.35);
+}
+
+.sidebar nav ul {
+    width: 100%;
+}
+
+.sidebar nav li {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.sidebar nav li:last-child {
+    margin-bottom: 0;
+}
+
+.sidebar nav a {
+    display: block;
+    width: 100%;
+    padding: 17px 20px;
+    border-radius: 12px;
+    transition: 0.3s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background-color: #A8B39B;
+    color: #49382E;
+}
+
+/* =========================
+   MUSIC PLAYER POSITION
+========================= */
+.music-widget {
+    width: 100%;
+    margin-top: 25px;
+    text-align: center;
+}
+
+#playerLauncher {
+    display: block;
+    margin: 0 auto;
 }
