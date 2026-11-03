@@ -95,3 +95,47 @@ filterButtons.forEach(button => {
     });
 
 });
+
+// =========================
+// BACKGROUND MUSIC
+// =========================
+
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+const volumeControl = document.getElementById("volumeControl");
+const musicStatus = document.getElementById("musicStatus");
+
+// Mengatur volume awal
+bgMusic.volume = 0.3;
+
+// Tombol Play dan Pause
+musicToggle.addEventListener("click", function() {
+
+    if (bgMusic.paused) {
+
+        bgMusic.play()
+            .then(() => {
+                musicToggle.textContent = "Ⅱ";
+                musicStatus.textContent = "Now Playing ♫";
+            })
+            .catch(error => {
+                musicStatus.textContent = "Music cannot be played";
+            });
+
+    } else {
+
+        bgMusic.pause();
+
+        musicToggle.textContent = "♫";
+        musicStatus.textContent = "Music is off";
+
+    }
+
+});
+
+// Mengatur volume musik
+volumeControl.addEventListener("input", function() {
+
+    bgMusic.volume = volumeControl.value;
+
+});

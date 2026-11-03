@@ -62,15 +62,80 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <li><a href="#registration">Registration</a></li>
             </ul>
         </nav>
+
+<!-- MINI MUSIC PLAYER -->
+    <div class="mini-player">
+    <audio id="bgMusic" loop>
+    <source src="audio/cozy-lofi.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicToggle" type="button" title="Play Music">
+        ♫
+    </button>
+
+    <div class="mini-player-info">
+        <span>A Cozy Moment</span>
+        <small id="musicStatus">Music is off</small>
+    </div>
+
+    <input
+        type="range"
+        id="volumeControl"
+        min="0"
+        max="1"
+        step="0.1"
+        value="0.3">
+    </div>
+</aside>
+
     </aside>
 
+    <!-- MUSIC PLAYER -->
+     <div class="music-player">
+        <p class="music-title">♫ A Cozy Moment</p>
+        <p class="music-subtitle">Soft music for you</p>
+
+     <audio id="bgMusic" loop>
+        <source src="audio/cozy-lofi.mp3" type="audio/mpeg">
+     </audio>
+
+     <button id="musicToggle" type="button">
+        ♡ Play Music
+     </button>
+
+     <div class="volume-control">
+        <span>♫</span>
+        <input
+            type="range"
+            id="volumeControl"
+            min="0"
+            max="1"
+            step="0.1"
+            value="0.3">
+     </div>
+     
+     <p id="musicStatus">Music is off</p>
+    </div>
+
     <main class="main-content">
+
+        <header class="site-header">
+    <div>
+        <p class="header-eyebrow">WELCOME TO NADÉ CROCHET</p>
+        <h2>A Little World of Handmade Creations</h2>
+        <p>Every stitch tells a story ♡</p>
+    </div>
+
+    <div class="header-decoration">
+        ✿
+    </div>
+    </header>
 
         <!-- Bagian Home -->
          <section id="home" class="home-section">
         <div class="hero">
         <div class="hero-text">
-        <p class="eyebrow">A LITTLE WORLD OF CROCHET</p>
+        <p class="eyebrow">A LITTLE WORLD OF CROCHET.</p>
                     
         <h1>Little things,<br>
             <span>made with love.</span>
