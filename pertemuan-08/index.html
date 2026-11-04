@@ -483,12 +483,13 @@
         <label for="telepon">Nomor Telepon</label>
         <input type="text" id="telepon" name="telepon" required>
 
-        <label for="interestedProduct">Product yang Diminati</label>
-        <select id="interestedProduct" name="product">
-            <option value="Amigurumi">Amigurumi</option>
-            <option value="Crochet Keychain">Crochet Keychain</option>
-            <option value="Crochet Bouquet">Crochet Bouquet</option>
-        </select>
+        <label for="product">Pilihan Jenis Crochet</label>
+        <select id="product" name="product" required>
+        <option value="" selected disabled>-- Pilih jenis crochet --</option>
+        <option value="Amigurumi">Amigurumi</option>
+        <option value="Crochet Keychain">Crochet Keychain</option>
+        <option value="Crochet Bouquet">Crochet Bouquet</option>
+    </select>
 
         <label for="pesan">Pesan</label>
         <textarea id="pesan" name="pesan"></textarea>
