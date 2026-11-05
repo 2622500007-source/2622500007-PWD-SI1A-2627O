@@ -1,7 +1,13 @@
+
 <?php
+session_start();
+
 $tahun = date("Y");
 $namaWebsite = "Nadé Crochet";
-$pesanKonfirmasi = "";
+
+$pesanKonfirmasi = $_SESSION["pesanKonfirmasi"] ?? "";
+unset($_SESSION["pesanKonfirmasi"]);
+
 $pesanGagal = "";
 $statusPendaftaran = "";
 
@@ -50,12 +56,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             "UTF-8"
         );
 
-        $pesanKonfirmasi = "Terima kasih, " . $namaAman .
-                           "! Pendaftaran kamu berhasil.";
+        $_SESSION["pesanKonfirmasi"] =
+            "Terima kasih, " . $namaAman .
+            "! Pendaftaran kamu berhasil.";
 
-        $statusPendaftaran = "success";
+        header("Location: index.php#registration");
+        exit;
     }
 
+    // Jika validasi gagal
     if ($pesanGagal !== "") {
         $statusPendaftaran = "error";
     }
@@ -138,10 +147,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <audio id="bgMusic" preload="auto">
             <source src="audio/song1.mp3" type="audio/mpeg">
-        </audio>
-
-        <audio id="clickSound" preload="auto">
-            <source src="audio/sound1.mp3" type="audio/mpeg">
         </audio>
 
         <div class="mini-player-info">
@@ -590,6 +595,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </button>
     </form>
 
+    <!-- SOUND EFFECT KLIK -->
+     <audio id="clickSound" preload="auto">
+        <source src="audio/sound1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- SOUND PENDAFTARAN BERHASIL -->
     <audio id="successSound" preload="auto">
     <source src="audio/sound2.mp3" type="audio/mpeg">
     </audio>

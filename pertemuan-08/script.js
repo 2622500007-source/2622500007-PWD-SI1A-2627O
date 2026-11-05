@@ -1,4 +1,39 @@
 // =========================
+// BUTTON SOUND EFFECT
+// =========================
+
+const clickSound = document.getElementById("clickSound");
+
+function playClickSound() {
+
+    if (!clickSound) {
+        console.log("clickSound tidak ditemukan!");
+        return;
+    }
+
+    clickSound.pause();
+    clickSound.currentTime = 0;
+    clickSound.volume = 0.2;
+
+    clickSound.play().catch(error => {
+        console.log("Sound 1 error:", error);
+    });
+
+}
+
+document.addEventListener("click", function(event) {
+
+    const clickable = event.target.closest(
+        "button, a, input, select, textarea, [role='button']"
+    );
+
+    if (!clickable || clickable.disabled) return;
+
+    playClickSound();
+
+}, true);
+
+// =========================
 // NAVIGASI WEBSITE
 // =========================
 
@@ -58,9 +93,7 @@ if (heroButton) {
 }
 
 // Menentukan halaman pertama
-const successMessage = document.querySelector(".success-message");
-
-const initialSection = successMessage
+const initialSection = document.getElementById("successNotification")
     ? "registration"
     : (location.hash.replace("#", "") || "home");
 
@@ -201,31 +234,6 @@ bgMusic.addEventListener("ended", nextSong);
 volumeControl.addEventListener("input", function() {
     bgMusic.volume = Number(volumeControl.value);
 });
-
-// =========================
-// BUTTON SOUND EFFECT
-// =========================
-
-const clickSound = document.getElementById("clickSound");
-
-function playClickSound() {
-    clickSound.currentTime = 0;
-    clickSound.volume = 0.05;
-    clickSound.play();
-}
-
-// Sound untuk tombol navigasi
-document.querySelectorAll("nav a, .hero-button").forEach(button => {
-    button.addEventListener("click", playClickSound);
-});
-
-// Sound untuk filter produk
-document.querySelectorAll(".filter").forEach(button => {
-    button.addEventListener("click", playClickSound);
-});
-
-// Sound untuk music player
-musicToggle.addEventListener("click", playClickSound);
 
 // =========================
 // OPEN & CLOSE MUSIC PLAYER

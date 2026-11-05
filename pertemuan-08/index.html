@@ -78,10 +78,6 @@
             <source src="audio/song1.mp3" type="audio/mpeg">
         </audio>
 
-        <audio id="clickSound" preload="auto">
-            <source src="audio/sound1.mp3" type="audio/mpeg">
-        </audio>
-
         <div class="mini-player-info">
             <span>A Cozy Moment</span>
             <small id="musicStatus">♫ Ready to Play ♫</small>
@@ -495,18 +491,15 @@
         <textarea id="pesan" name="pesan"></textarea>
         <button type="submit">Kirim Pendaftaran</button>
 
-        <div class="notification-overlay" id="successNotification">
-        <div class="notification-box">
-            <div class="notification-icon">♡</div>
-            <h2>Pendaftaran Berhasil!</h2>
-            <p><?= $pesanKonfirmasi ?></p>
-            <button type="button" id="closeNotification">
-                Mengerti ♡
-            </button>
-        </div>
     </div>
     </form>
 
+    <!-- SOUND EFFECT KLIK -->
+    <audio id="clickSound" preload="auto">
+        <source src="audio/sound1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- SOUND PENDAFTARAN BERHASIL -->
     <audio id="successSound" preload="auto">
     <source src="audio/sound2.mp3" type="audio/mpeg">
     </audio>
