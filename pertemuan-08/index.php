@@ -630,7 +630,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </p>
     <?php endif; ?>
 
-    <?php if (!empty($nama)): ?>
+         </section>
+         </main>
+        <!-- Bagian Footer -->
+        <footer>
+            <p>
+                &copy; <?= $tahun ?> 2622500007_Nadiyah Salma_SI1A_UTS Pemrograman Web Dasar
+            </p>
+        </footer>
+
+    <button id="backToTop" title="Back to Top"
+        aria-label="Kembali ke atas">
+    ↑
+    </button>
+
+        <?php if (!empty($nama)): ?>
             <h3>Data yang Diterima Peladen</h3>
 
             <p>Nama:
@@ -676,19 +690,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
              <p><?= nl2br(htmlspecialchars($pesan, ENT_QUOTES, 'UTF-8')) ?></p> 
         <?php endif; ?> 
 
-         </section>
-         </main>
-        <!-- Bagian Footer -->
-        <footer>
-            <p>
-                &copy; <?= $tahun ?> 2622500007_Nadiyah Salma_SI1A_UTS Pemrograman Web Dasar
-            </p>
-        </footer>
-
-    <button id="backToTop" title="Back to Top"
-        aria-label="Kembali ke atas">
-    ↑
-    </button>
 </main>
 </div>
 <script src="script.js"></script>
