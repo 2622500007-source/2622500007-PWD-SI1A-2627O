@@ -631,7 +631,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php endif; ?>
 
          </section>
-         </main>
         <!-- Bagian Footer -->
         <footer>
             <p>
