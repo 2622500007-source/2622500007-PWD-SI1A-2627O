@@ -622,6 +622,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <p class="error-message">
         <?= htmlspecialchars($pesanGagal, ENT_QUOTES, "UTF-8") ?>
     </p>
+    <?php endif; ?> 
+
+    <?php if ($pesanGagal !== ""): ?>
+    <p class="error-message">
+        <?= htmlspecialchars($pesanGagal, ENT_QUOTES, "UTF-8") ?>
+    </p>
     <?php endif; ?>
 
     <?php if (!empty($nama)): ?>
@@ -669,7 +675,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
              
              <p><?= nl2br(htmlspecialchars($pesan, ENT_QUOTES, 'UTF-8')) ?></p> 
         <?php endif; ?> 
-         </section>   
+
+         </section>
+         </main>
         <!-- Bagian Footer -->
         <footer>
             <p>

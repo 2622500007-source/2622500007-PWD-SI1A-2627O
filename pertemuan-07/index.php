@@ -407,7 +407,6 @@ $pesan = $_SESSION['pesan'] ?? [];
 
      </section>
     </main>
-
     <footer>
         <p>&copy; <?= date("Y") ?> <?php echo $namaMahasiswa; ?> [<?= $nim ?>]</p>
     </footer>
