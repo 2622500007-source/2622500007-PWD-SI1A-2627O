@@ -14,3 +14,4 @@
 - memeriksa dan memperbaiki data awal tabel kontak
 - menentukan pengaturan ekspor basis data
 - mengekspor basis data ke berkas SQL
+- memeriksa kelengkapan berkas ekspor SQL
