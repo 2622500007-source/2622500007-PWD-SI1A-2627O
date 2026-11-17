@@ -12,3 +12,4 @@
 - mempelajari perintah SQL insert
 - memeriksa data awal pada tabel kontak
 - memeriksa dan memperbaiki data awal tabel kontak
+- menentukan pengaturan ekspor basis data
