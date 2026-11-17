@@ -9,3 +9,4 @@
 - menentukan primary key dan auto increment tabel kontak
 - memeriksa rancangan akhir struktur tabel kontak
 - memasukkan data awal ke tabel kontak
+- mempelajari perintah SQL insert
