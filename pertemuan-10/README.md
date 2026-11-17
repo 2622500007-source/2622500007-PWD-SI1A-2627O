@@ -11,3 +11,4 @@
 - memasukkan data awal ke tabel kontak
 - mempelajari perintah SQL insert
 - memeriksa data awal pada tabel kontak
+- memeriksa dan memperbaiki data awal tabel kontak
