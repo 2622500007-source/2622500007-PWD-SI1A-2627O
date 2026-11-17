@@ -10,3 +10,4 @@
 - memeriksa rancangan akhir struktur tabel kontak
 - memasukkan data awal ke tabel kontak
 - mempelajari perintah SQL insert
+- memeriksa data awal pada tabel kontak
