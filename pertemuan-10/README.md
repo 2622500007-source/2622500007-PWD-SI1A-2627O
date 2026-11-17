@@ -8,3 +8,4 @@
 - merancang atribut dan tipe data tabel kontak
 - menentukan primary key dan auto increment tabel kontak
 - memeriksa rancangan akhir struktur tabel kontak
+- memasukkan data awal ke tabel kontak
