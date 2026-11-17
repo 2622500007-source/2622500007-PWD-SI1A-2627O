@@ -3,3 +3,4 @@
 - memeriksa kesiapan phpMyAdmin dan git push repositori pertemuan 10
 - mengidentifikasi kebutuhan data formulir kontak P10
 - menentukan data formulir yang akan disimpan ke basis data
+- menentukan representasi data pilihan minat
