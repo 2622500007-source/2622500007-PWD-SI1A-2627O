@@ -322,5 +322,5 @@ Anda" required></textarea>
     <p>&copy; <?= date("Y"); ?> <?= bersihkan($namaMahasiswa); ?> [<?= bersihkan($nim); ?>]</p> 
   </footer> 
   <script src="script.js"></script> 
-</body> 
+</body>
 </html>
