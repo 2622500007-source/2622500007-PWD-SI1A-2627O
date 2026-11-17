@@ -6,3 +6,4 @@
 - menentukan representasi data pilihan minat
 - menentukan nama basis data dan tabel P10
 - merancang atribut dan tipe data tabel kontak
+- menentukan primary key dan auto increment tabel kontak
