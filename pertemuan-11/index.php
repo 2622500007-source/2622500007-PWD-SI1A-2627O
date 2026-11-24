@@ -5,7 +5,8 @@
 require_once("fungsi.php"); #Penggunaan require_once() memastikan berkas tersebut tersedia dan tidak dimuat berulang kali.
 #P11 
 require_once("koneksi.php");
- 
+// P11: Mengambil data kontak dari basis data menggunakan operasi READ. 
+$sql = "SELECT * FROM tbl_kontak_nim";
 #kode setelah 
 session_start(); 
  
