@@ -8,7 +8,10 @@ require_once("koneksi.php");
 // P11: Mengambil data kontak dari basis data menggunakan operasi READ. 
 $sql = "SELECT * FROM tbl_kontak_nim";
 $hasil = mysqli_query($koneksi, $sql); 
-
+// P11: Memeriksa keberhasilan kueri SELECT. 
+if (!$hasil) { 
+  die("Kueri SELECT gagal dijalankan."); 
+}
 #kode setelah 
 session_start(); 
  
