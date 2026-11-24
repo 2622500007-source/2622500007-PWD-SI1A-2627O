@@ -71,12 +71,12 @@ while ($baris = mysqli_fetch_assoc($hasil)) {
 }
 
 // P6: Variabel dan konstanta
-$nim = "0344300002";
-$namaMahasiswa = "Cantika Putih";
+$nim = "262250000";
+$namaMahasiswa = "Nadiyah Salma";
 $programStudi = "SI";
 $tahunAkademik = "2026/2027";
-$semester = 4;
-$ipk = 3.75;
+$semester = 1;
+$ipk = 4.00;
 $statusAktif = true;
 $catatanTambahan = null;
 
@@ -156,8 +156,8 @@ $teknologiWeb = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"];
       <p>Halo, saya <?= tebal($namaMahasiswa); ?>. Saya sedang mempelajari matakuliah <strong><?= 
 bersihkan(NAMA_MATA_KULIAH); ?></strong> pada tahun akademik <?= bersihkan($tahunAkademik); ?>.</p> 
  
-      <img src="img/fotoprofil" alt="Foto profil Nama Mahasiswa" />
-    </section> 
+      <img src="img/foto-mahasiswa.jpeg" alt="Foto profil Nama Mahasiswa" />
+    </section>
  
     <section id="about"> 
       <h2>Tentang Saya</h2> 
