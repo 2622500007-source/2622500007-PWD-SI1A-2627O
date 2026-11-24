@@ -156,7 +156,7 @@ $teknologiWeb = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"];
       <p>Halo, saya <?= tebal($namaMahasiswa); ?>. Saya sedang mempelajari matakuliah <strong><?= 
 bersihkan(NAMA_MATA_KULIAH); ?></strong> pada tahun akademik <?= bersihkan($tahunAkademik); ?>.</p> 
  
-      <img src="img/foto-mahasiswa" alt="Foto profil Nama Mahasiswa" />
+      <img src="img/fotoprofil" alt="Foto profil Nama Mahasiswa" />
     </section> 
  
     <section id="about"> 
