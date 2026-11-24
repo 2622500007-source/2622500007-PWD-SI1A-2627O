@@ -6,3 +6,4 @@
 - membuat berkas koneksi PHP-MySQL P11
 - mengimplementasikan koneksi PHP-MySQL menggunakan MySQLi
 - menguji koneksi dari PHP ke MySQL dengan file sementara Bernama uji_koneksi.php
+- menyiapkan pemuatan berkas koneksi pada P11
