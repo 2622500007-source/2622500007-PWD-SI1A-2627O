@@ -1,111 +1,121 @@
+
 <?php
-#dimatikan pada P11 
-#session_start(); 
- 
-require_once("fungsi.php"); #Penggunaan require_once() memastikan berkas tersebut tersedia dan tidak dimuat berulang kali.
-#P11 
+// Memanggil fungsi dan koneksi database.
+require_once("fungsi.php");
 require_once("koneksi.php");
-// P11: Mengambil data kontak dari basis data menggunakan operasi READ. 
-$sql = "SELECT * FROM tbl_kontak_nim";
-$hasil = mysqli_query($koneksi, $sql); 
-// P11: Memeriksa keberhasilan kueri SELECT. 
-if (!$hasil) { 
-  die("Kueri SELECT gagal dijalankan."); 
+
+// P11: Menyimpan data formulir ke database.
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    $nama = trim((string) ($_POST["nama"] ?? ""));
+    $email = trim((string) ($_POST["email"] ?? ""));
+    $semesterForm = (int) ($_POST["semester"] ?? 0);
+    $tanggal = trim((string) ($_POST["tanggal"] ?? ""));
+    $jenisPesan = trim((string) ($_POST["jenis_pesan"] ?? ""));
+    $minat = $_POST["minat"] ?? [];
+    $prodi = trim((string) ($_POST["prodi"] ?? ""));
+    $pesan = trim((string) ($_POST["pesan"] ?? ""));
+
+    // Mengubah checkbox menjadi satu teks.
+    if (!is_array($minat)) {
+        $minat = [];
+    }
+
+    $minatText = implode(", ", $minat);
+
+    // Menyimpan data menggunakan perintah INSERT.
+    $sqlInsert = "INSERT INTO tbl_kontak_2622500007
+        (nama, email, semester, tanggal, jenis_pesan, minat, prodi, pesan)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = mysqli_prepare($koneksi, $sqlInsert);
+
+    if (!$stmt) {
+        die("Persiapan kueri INSERT gagal.");
+    }
+
+    mysqli_stmt_bind_param(
+        $stmt,
+        "ssisssss",
+        $nama,
+        $email,
+        $semesterForm,
+        $tanggal,
+        $jenisPesan,
+        $minatText,
+        $prodi,
+        $pesan
+    );
+
+    if (mysqli_stmt_execute($stmt)) {
+        header("Location: index.php#contact");
+        exit;
+    } else {
+        die("Penyimpanan data gagal: " . mysqli_stmt_error($stmt));
+    }
 }
-// P11: Mengambil hasil kueri sebagai larik asosiatif. 
-$dataKontak = []; 
-while ($baris = mysqli_fetch_assoc($hasil)) { 
-  $dataKontak[] = $baris; 
+
+// P11: Mengambil data kontak dari database menggunakan SELECT.
+$sql = "SELECT * FROM tbl_kontak_2622500007 ORDER BY id DESC";
+$hasil = mysqli_query($koneksi, $sql);
+
+if (!$hasil) {
+    die("Kueri SELECT gagal dijalankan.");
 }
-// P11: Pengujian sementara hasil pengambilan data. 
-echo "<pre>"; 
-var_dump($dataKontak); 
-echo "</pre>";
-#kode setelah 
-session_start(); 
- 
-require_once("fungsi.php"); #Penggunaan require_once() memastikan berkas tersebut tersedia dan tidak dimuat berulang kali. 
- 
-// P9: Memproses data formulir dan menyimpannya ke dalam session. 
-if ($_SERVER["REQUEST_METHOD"] === "POST") { 
-  $nama = trim((string) ($_POST["nama"] ?? "")); 
-  $email = trim((string) ($_POST["email"] ?? "")); 
-  $semesterForm = trim((string) ($_POST["semester"] ?? "")); 
-  $tanggal = trim((string) ($_POST["tanggal"] ?? "")); 
-  $jenisPesan = trim((string) ($_POST["jenis_pesan"] ?? "")); 
-  $minat = $_POST["minat"] ?? []; 
-  $prodi = trim((string) ($_POST["prodi"] ?? "")); 
-  $pesan = trim((string) ($_POST["pesan"] ?? "")); 
- 
-  // Checkbox dapat mengirimkan lebih dari satu nilai. 
-  if (!is_array($minat)) { 
-    $minat = []; 
-  } 
- 
-  // Menyimpan semua data formulir ke dalam satu larik asosiatif di session. 
-  $_SESSION["form_data"] = [ 
-    "nama"         => $nama, 
-    "email"        => $email, 
-    "semester"     => $semesterForm, 
-    "tanggal"      => $tanggal, 
-    "jenis_pesan"  => $jenisPesan, 
-    "minat"        => $minat, 
-    "prodi"        => $prodi, 
-    "pesan"        => $pesan, 
-  ]; 
- 
-  // PRG: mengarahkan kembali ke halaman sebelum menghasilkan keluaran HTML. 
-  header("Location: index.php#contact"); 
-  exit; 
-} 
- 
-// P6: PHP dasar dan pemrograman sisi peladen 
-// Bagian 1: Variabel dan konstanta 
-$nim = "0344300002"; 
-$namaMahasiswa = "Cantika Putih"; 
-$programStudi = "SI"; 
-$tahunAkademik = "2026/2027"; 
-$semester = 4; 
-$ipk = 3.75; 
+
+// Menyimpan hasil kueri ke dalam larik $dataKontak.
+$dataKontak = [];
+
+while ($baris = mysqli_fetch_assoc($hasil)) {
+    $dataKontak[] = $baris;
+}
+
+// P6: Variabel dan konstanta
+$nim = "0344300002";
+$namaMahasiswa = "Cantika Putih";
+$programStudi = "SI";
+$tahunAkademik = "2026/2027";
+$semester = 4;
+$ipk = 3.75;
 $statusAktif = true;
-$catatanTambahan = null; 
- 
-const NAMA_MATA_KULIAH = "Pemrograman Web Dasar"; 
-const PROFIL_GITHUB = "satpamal"; 
- 
-// Bagian 2: Operator 
-$batasSemester = 8; 
-$sisaSemester = $batasSemester - $semester; 
-$semesterValid = $semester >= 1 && $semester <= $batasSemester; 
-$statusSemester = ($semesterValid && $statusAktif) ? "Sesuai rentang" : "Perlu diperiksa"; 
- 
-// Bagian 3: Percabangan if-elseif-else 
-if ($semester < 3) { 
-  $keteranganSemester = "Semester awal"; 
-} elseif ($semester <= 6) { 
-  $keteranganSemester = "Semester menengah"; 
-} else { 
-  $keteranganSemester = "Semester akhir"; 
-} 
- 
-$namaProdi = ($programStudi == "SI") ? "Sistem Informasi" : (($programStudi == "TI") ? "Teknik 
-Informatika" : "Lainnya"); 
- 
-// Bagian 4: Percabangan switch-case-default 
-switch ($programStudi) { 
-  case "SI": 
-    $fokusProgramStudi = "Sistem informasi dan proses bisnis"; 
-    break; 
-  case "TI": 
-    $fokusProgramStudi = "Komputasi dan pengembangan perangkat lunak"; 
-    break; 
-  default: 
-    $fokusProgramStudi = "Belum ditentukan"; 
-} 
- 
-// P9: Larik terindeks untuk menyimpan teknologi web yang dipelajari. 
-$teknologiWeb = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"]; 
-?> 
+$catatanTambahan = null;
+
+const NAMA_MATA_KULIAH = "Pemrograman Web Dasar";
+const PROFIL_GITHUB = "satpamal";
+
+// Bagian 2: Operator
+$batasSemester = 8;
+$sisaSemester = $batasSemester - $semester;
+$semesterValid = $semester >= 1 && $semester <= $batasSemester;
+$statusSemester = ($semesterValid && $statusAktif) ? "Sesuai rentang" : "Perlu diperiksa";
+
+// Bagian 3: Percabangan
+if ($semester < 3) {
+    $keteranganSemester = "Semester awal";
+} elseif ($semester <= 6) {
+    $keteranganSemester = "Semester menengah";
+} else {
+    $keteranganSemester = "Semester akhir";
+}
+
+$namaProdi = ($programStudi == "SI") ? "Sistem Informasi" : (($programStudi == "TI") ? "Teknik Informatika" : "Lainnya");
+
+// Bagian 4: Switch-case
+switch ($programStudi) {
+    case "SI":
+        $fokusProgramStudi = "Sistem informasi dan proses bisnis";
+        break;
+    case "TI":
+        $fokusProgramStudi = "Komputasi dan pengembangan perangkat lunak";
+        break;
+    default:
+        $fokusProgramStudi = "Belum ditentukan";
+}
+
+// P9: Larik terindeks
+$teknologiWeb = ["HTML", "CSS", "JavaScript", "PHP", "MySQL"];
+?>
+
 <!doctype html> 
 <html lang="id"> 
  
@@ -291,52 +301,53 @@ Anda" required></textarea>
         <p class="form-feedback" data-form-feedback aria-live="polite"></p>
          </form> 
  
-      <?php if (isset($_SESSION["form_data"])): ?> 
-        <?php 
-        // Larik asosiatif untuk menghubungkan nama field dengan label. 
-        /* 
-        kunci larik tidak harus berupa angka.  
-        Kunci dapat berupa teks yang memiliki makna tertentu. 
-        */ 
-        $labelMap = [ 
-          "nama"        => "Nama Lengkap", 
-          "email"       => "Email", 
-          "semester"    => "Semester", 
-          "tanggal"     => "Tanggal Kunjungan", 
-          "jenis_pesan" => "Jenis Pesan", 
-          "prodi"       => "Program Studi", 
-        ]; 
-        ?> 
-        <article id="hasilKontak" class="submission-result" aria-live="polite"> 
-          <h3>Data Formulir yang Dikirim</h3> 
- 
-          <?php foreach ($labelMap as $key => $label): ?> 
-            <p><strong><?= bersihkan($label); ?>:</strong> <?= bersihkan($_SESSION["form_data"][$key]); 
-?></p> 
-          <?php endforeach; ?> 
- 
-          <?php 
-          /* 
-            $key untuk mendapatkan kunci larik. 
-            $label untuk mendapatkan nilai larik. 
-            $key untuk mengakses data formulir pada $_SESSION["form_data"]. 
-          */ 
-          ?> 
- 
-          <p><strong>Topik yang Diminati:</strong></p> 
-          <?php if (count($_SESSION["form_data"]["minat"]) > 0): ?> 
-            <ul> 
-              <?php foreach ($_SESSION["form_data"]["minat"] as $topik): ?> 
-                <li><?= bersihkan($topik); ?></li> 
-              <?php endforeach; ?> 
-            </ul> 
-          <?php else: ?> 
-            <p>Belum ada topik yang dipilih.</p> 
-          <?php endif; ?> 
- 
-          <p><strong>Pesan:</strong> <?= nl2br(bersihkan($_SESSION["form_data"]["pesan"])); ?></p> 
-        </article> 
-      <?php endif; ?> 
+    <article id="hasilKontak" class="submission-result" aria-live="polite">
+    <h3>Data Kontak dari Database</h3>
+
+    <?php if (count($dataKontak) > 0): ?>
+
+        <?php foreach ($dataKontak as $kontak): ?>
+
+            <div class="contact-item">
+                <p><strong>Nama Lengkap:</strong>
+                    <?= bersihkan($kontak["nama"]); ?>
+                </p>
+
+                <p><strong>Email:</strong>
+                    <?= bersihkan($kontak["email"]); ?>
+                </p>
+
+                <p><strong>Semester:</strong>
+                    <?= bersihkan($kontak["semester"]); ?>
+                </p>
+
+                <p><strong>Tanggal Kunjungan:</strong>
+                    <?= bersihkan($kontak["tanggal"]); ?>
+                </p>
+
+                <p><strong>Jenis Pesan:</strong>
+                    <?= bersihkan($kontak["jenis_pesan"]); ?>
+                </p>
+
+                <p><strong>Topik yang Diminati:</strong>
+                    <?= bersihkan($kontak["minat"]); ?>
+                </p>
+
+                <p><strong>Program Studi:</strong>
+                    <?= bersihkan($kontak["prodi"]); ?>
+                </p>
+
+                <p><strong>Pesan:</strong>
+                    <?= nl2br(bersihkan($kontak["pesan"])); ?>
+                </p>
+            </div>
+            <hr />
+    <?php endforeach; ?>
+    <?php else: ?>
+        <p>Belum ada data kontak yang tersimpan.</p>
+    <?php endif; ?>
+</article>
+
     </section> 
   </main> 
  
